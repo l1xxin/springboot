@@ -1,8 +1,10 @@
 package com.example.springboot.mapper;
 
 import com.example.springboot.controller.dto.ActUserDTO;
+import com.example.springboot.controller.dto.MyActDTO;
 import com.example.springboot.entity.UserActivity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import io.swagger.models.auth.In;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -43,4 +45,9 @@ public interface UserActivityMapper extends BaseMapper<UserActivity> {
             "WHERE s.username = u.user_id and u.act_id = #{actId}\n" +
             ") AND s.role = 'ROLE_TEA'")
     List<ActUserDTO> selectTeaByActId(@Param("actId") Integer actId);
+
+    @Select("SELECT activity.id as id,activity.`name` as name\n" +
+            "FROM activity,user_activity\n" +
+            "WHERE activity.id = user_activity.act_id AND user_activity.user_id = #{userId}\n")
+    List<MyActDTO> selectMyActByUser(@Param("userId") String userId);
 }
