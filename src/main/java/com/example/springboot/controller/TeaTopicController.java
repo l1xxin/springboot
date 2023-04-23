@@ -130,6 +130,11 @@ public class TeaTopicController {
         return Result.success();
     }
 
+    @GetMapping("/findApplyByActId/{actId}")
+    public Result findApplyByActId(@PathVariable Integer actId){
+        return Result.success(teaTopicService.getApplyByActId(actId));
+    }
+
     private User getUser() {
         return TokenUtils.getCurrentUser();
     }
