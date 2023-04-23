@@ -29,9 +29,9 @@ public class CodeGenerator {
     private static final String basePath = "D:\\bs\\springboot\\";
 
     // 数据库需要生成代码的表名
-    private static final String tableName = "stu_task";
+    private static final String tableName = "user_activity";
     // 生成页面的菜单名称
-    private static final String modelName = "学生课设任务管理";
+    private static final String modelName = "用户活动管理";
 
     // ----------------------------------------以上必修修改-----------------------------------------
 

@@ -1,7 +1,6 @@
 package com.example.springboot.mapper;
 
 import com.example.springboot.controller.dto.ActUserDTO;
-import com.example.springboot.entity.User;
 import com.example.springboot.entity.UserActivity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -19,6 +18,11 @@ import java.util.List;
  */
 public interface UserActivityMapper extends BaseMapper<UserActivity> {
 
+    /**
+     * 根据活动id获取学生用户列表
+     * @param actId
+     * @return
+     */
     @Select("SELECT s.username as num,s.nickname as name\n" +
             "FROM sys_user s\n" +
             "WHERE NOT EXISTS(\n" +

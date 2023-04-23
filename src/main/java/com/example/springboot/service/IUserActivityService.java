@@ -15,7 +15,10 @@ import java.util.List;
  * @since 2023-04-23
  */
 public interface IUserActivityService extends IService<UserActivity> {
-
+    /**
+     * 根据活动id获取学生用户列表
+     * @param actId
+     * @return
+     */
     List<ActUserDTO> getUnselectedUserByActId(Integer actId);
-
 }

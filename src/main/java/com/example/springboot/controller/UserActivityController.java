@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelReader;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.springboot.controller.dto.AddUserActDTO;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.InputStream;
@@ -130,13 +132,43 @@ public class UserActivityController {
         return Result.success();
     }
 
-    @GetMapping("/{actId}")
-    public Result findUserByActId(@PathVariable Integer id){
-        return Result.success(userActivityService.getUnselectedUserByActId(id));
-    }
-
     private User getUser() {
         return TokenUtils.getCurrentUser();
+    }
+
+    /**
+     * 批量添加用户活动数据
+     * @param list
+     * @return
+     * @throws Exception
+     */
+    @PostMapping("/addUserAct")
+    public Result addStu(@RequestBody List<AddUserActDTO> list) throws Exception {
+        System.out.println(list);
+        // 通过 javabean的方式读取Excel内的对象，但是要求表头必须是英文，跟javabean的属性要对应起来
+        List<UserActivity> userAct = CollUtil.newArrayList();
+        for (AddUserActDTO row : list) {
+            UserActivity userActivity = new UserActivity();
+//            userActivity.setId(null);
+//            userActivity.setState(0);
+            userActivity.setUserId(row.getUserId());
+            userActivity.setActId(row.getActId());
+            System.out.println("用户id"+userActivity.getUserId());
+            System.out.println("活动id"+userActivity.getActId());
+            userAct.add(userActivity);
+        }
+        userActivityService.saveBatch(userAct);
+        return Result.success();
+    }
+
+    /**
+     * 上下属性一定要一样
+     * @param actId
+     * @return
+     */
+    @GetMapping("/findStu/{actId}")
+    public Result findUserByActId(@PathVariable Integer actId){
+        return Result.success(userActivityService.getUnselectedUserByActId(actId));
     }
 
 }

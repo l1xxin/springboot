@@ -6,7 +6,6 @@ import com.example.springboot.entity.UserActivity;
 import com.example.springboot.mapper.UserActivityMapper;
 import com.example.springboot.service.IUserActivityService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,7 +21,6 @@ import java.util.List;
  */
 @Service
 public class UserActivityServiceImpl extends ServiceImpl<UserActivityMapper, UserActivity> implements IUserActivityService {
-
     private static final Log LOG = Log.get();
 
     @Resource
@@ -38,5 +36,4 @@ public class UserActivityServiceImpl extends ServiceImpl<UserActivityMapper, Use
         List<ActUserDTO> Users = userActivityMapper.selectByActId(actId);
         return Users;
     }
-
 }

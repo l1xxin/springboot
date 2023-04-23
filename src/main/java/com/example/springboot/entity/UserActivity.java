@@ -33,7 +33,7 @@ public class UserActivity implements Serializable {
     private Integer actId;
 
     @ApiModelProperty("用户id")
-    private Integer userId;
+    private String userId;
 
     private Integer state;
 
