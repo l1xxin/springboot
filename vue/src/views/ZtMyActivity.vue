@@ -46,10 +46,8 @@ export default {
     load() {
       this.request.get("/userActivity/findMyAct/" + this.user.username).then(res => {
       	if (res.code == '200') {
-      		this.$message.success("查询成功")
+      		// this.$message.success("查询成功")
       		this.tableData = res.data
-			console.log(res.data)
-			console.log(this.tableData)
       	} else {
       		this.$message.success("查询失败")
       	}
@@ -91,12 +89,12 @@ export default {
       this.load()
     },
     handleSizeChange(pageSize) {
-      console.log(pageSize)
+      // console.log(pageSize)
       this.pageSize = pageSize
       this.load()
     },
     handleCurrentChange(pageNum) {
-      console.log(pageNum)
+      // console.log(pageNum)
       this.pageNum = pageNum
       this.load()
     },
@@ -116,6 +114,18 @@ export default {
     },
 	//根据活动id查看当前活动的拟题记录 tea_topic
 	topics(actId){
+		const id = actId
+		//根据角色不同进入不同的页面
+		if(this.user.role='USER_TEA'){
+			sessionStorage.setItem("ActId", JSON.stringify(id));
+			this.$router.push('/ztTeaTopic')
+		}
+		if(this.user.role='USER_Stu'){
+			// this.$router.push('/ztTeaTopic')
+		}
+		if(this.user.role='USER_EDU'){
+			// this.$router.push('/ztTeaTopic')
+		}
 		
 	},
   }
