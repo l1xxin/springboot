@@ -37,9 +37,9 @@
       <el-table-column label="文件"><template slot-scope="scope"><el-button type="primary" @click="download(scope.row.file)">下载</el-button></template></el-table-column>
       <el-table-column prop="status" label="审批状态">
 		  <template slot-scope="scope">
-		  	<el-tag type="warning" effect="dark" v-if="scope.row.state==2">待审批</el-tag>
-		  	<el-tag type="success" effect="dark" v-if="scope.row.state==1">已通过</el-tag>
-		  	<el-tag type="danger" effect="dark" v-if="scope.row.state==0">未通过</el-tag>
+		  	<el-tag type="warning" effect="dark" v-if="scope.row.status==2">待审批</el-tag>
+		  	<el-tag type="success" effect="dark" v-if="scope.row.status==1">已通过</el-tag>
+		  	<el-tag type="danger" effect="dark" v-if="scope.row.status==0">未通过</el-tag>
 		  </template>
 	  </el-table-column>
       <el-table-column prop="state" label=""></el-table-column>
