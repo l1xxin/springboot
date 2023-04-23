@@ -4,10 +4,11 @@
 	<!-- 表格 -->
 	<el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'">
 		<el-table-column prop="id" label="ID" width="100" sortable></el-table-column>
-		<el-table-column prop="name" label="活动名称"></el-table-column>
+		<el-table-column prop="name" label="活动名称" width=""></el-table-column>
 		<el-table-column label="操作" width="600" align="center">
 			<template slot-scope="scope">
-				
+				<el-button type="primary" @click="topics(scope.row.id)">查看课题 <i class="el-icon-edit"></i>
+				</el-button>
 			</template>
 		</el-table-column>
 	</el-table>
@@ -112,7 +113,11 @@ export default {
     handleExcelImportSuccess() {
       this.$message.success("导入成功")
       this.load()
-    }
+    },
+	//根据活动id查看当前活动的拟题记录 tea_topic
+	topics(actId){
+		
+	},
   }
 }
 </script>
