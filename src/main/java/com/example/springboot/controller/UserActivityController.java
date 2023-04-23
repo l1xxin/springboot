@@ -130,6 +130,11 @@ public class UserActivityController {
         return Result.success();
     }
 
+    @GetMapping("/{actId}")
+    public Result findUserByActId(@PathVariable Integer id){
+        return Result.success(userActivityService.getUnselectedUserByActId(id));
+    }
+
     private User getUser() {
         return TokenUtils.getCurrentUser();
     }
