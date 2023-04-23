@@ -2,6 +2,7 @@ package com.example.springboot.service.impl;
 
 import cn.hutool.log.Log;
 import com.example.springboot.controller.dto.ActUserDTO;
+import com.example.springboot.entity.User;
 import com.example.springboot.entity.UserActivity;
 import com.example.springboot.mapper.UserActivityMapper;
 import com.example.springboot.service.IUserActivityService;
@@ -32,8 +33,20 @@ public class UserActivityServiceImpl extends ServiceImpl<UserActivityMapper, Use
      * @return
      */
     @Override
-    public List<ActUserDTO> getUnselectedUserByActId(Integer actId){
-        List<ActUserDTO> Users = userActivityMapper.selectByActId(actId);
+    public List<ActUserDTO> getUnselectedStuByActId(Integer actId){
+        List<ActUserDTO> Users = userActivityMapper.selectStuByActId(actId);
         return Users;
     }
+    /**
+     * 用于查询未选择某个活动的教师用户
+     * @param actId
+     * @return
+     */
+    @Override
+    public List<ActUserDTO> getUnselectedTeaByActId(Integer actId) {
+        List<ActUserDTO> Users = userActivityMapper.selectTeaByActId(actId);
+        return Users;
+    }
+
+
 }

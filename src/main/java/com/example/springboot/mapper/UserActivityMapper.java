@@ -29,6 +29,18 @@ public interface UserActivityMapper extends BaseMapper<UserActivity> {
             "SELECT 1 FROM user_activity u\n" +
             "WHERE s.username = u.user_id and u.act_id = #{actId}\n" +
             ") AND s.role = 'ROLE_STU'")
-    List<ActUserDTO> selectByActId(@Param("actId") Integer actId);
+    List<ActUserDTO> selectStuByActId(@Param("actId") Integer actId);
 
+    /**
+     * 根据活动id获取未选活动老师信息
+     * @param actId
+     * @return
+     */
+    @Select("SELECT s.username as num,s.nickname as name\n" +
+            "FROM sys_user s\n" +
+            "WHERE NOT EXISTS(\n" +
+            "SELECT 1 FROM user_activity u\n" +
+            "WHERE s.username = u.user_id and u.act_id = #{actId}\n" +
+            ") AND s.role = 'ROLE_TEA'")
+    List<ActUserDTO> selectTeaByActId(@Param("actId") Integer actId);
 }

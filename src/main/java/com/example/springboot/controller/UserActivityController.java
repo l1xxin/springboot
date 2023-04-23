@@ -10,6 +10,7 @@ import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.controller.dto.AddUserActDTO;
+import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.InputStream;
@@ -167,8 +168,13 @@ public class UserActivityController {
      * @return
      */
     @GetMapping("/findStu/{actId}")
-    public Result findUserByActId(@PathVariable Integer actId){
-        return Result.success(userActivityService.getUnselectedUserByActId(actId));
+    public Result findStuByActId(@PathVariable Integer actId){
+        return Result.success(userActivityService.getUnselectedStuByActId(actId));
+    }
+
+    @GetMapping("/findTea/{actId}")
+    public Result findTeaByActId(@PathVariable Integer actId){
+        return Result.success(userActivityService.getUnselectedTeaByActId(actId));
     }
 
 }

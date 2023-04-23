@@ -20,5 +20,12 @@ public interface IUserActivityService extends IService<UserActivity> {
      * @param actId
      * @return
      */
-    List<ActUserDTO> getUnselectedUserByActId(Integer actId);
+    List<ActUserDTO> getUnselectedStuByActId(Integer actId);
+
+    /**
+     * 根据活动id获取未选活动老师用户列表
+     * @param actId
+     * @return
+     */
+    List<ActUserDTO> getUnselectedTeaByActId(Integer actId);
 }
