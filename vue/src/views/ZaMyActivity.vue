@@ -1,7 +1,24 @@
 <!-- 用户查看自己的课设活动 -->
 <template>
   <div>
-
+	<!-- 表格 -->
+	<el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'">
+		<el-table-column prop="id" label="ID" width="100" sortable></el-table-column>
+		<el-table-column prop="name" label="活动名称"></el-table-column>
+		<el-table-column label="操作" width="600" align="center">
+			<template slot-scope="scope">
+				
+			</template>
+		</el-table-column>
+	</el-table>
+	<!-- 分页 -->
+	<div style="padding: 10px 0">
+		<el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pageNum"
+			:page-sizes="[2, 5, 10, 20]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper"
+			:total="total">
+		</el-pagination>
+	</div>
+	
   </div>
 </template>
 
@@ -26,7 +43,16 @@ export default {
   },
   methods: {
     load() {
-      
+      this.request.get("/userActivity/findMyAct/" + this.user.username).then(res => {
+      	if (res.code == '200') {
+      		this.$message.success("查询成功")
+      		this.tableData = res.data
+			console.log(res.data)
+			console.log(this.tableData)
+      	} else {
+      		this.$message.success("查询失败")
+      	}
+      })
     },
     
     handleAdd() {

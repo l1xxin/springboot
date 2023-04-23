@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class MyActDTO {
     //课设id
-    private Integer actId;
+    private Integer id;
     //课设名字
     private String name;
 }
