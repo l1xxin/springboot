@@ -1,6 +1,7 @@
 package com.example.springboot.service;
 
 import com.example.springboot.controller.dto.ActUserDTO;
+import com.example.springboot.controller.dto.MyActDTO;
 import com.example.springboot.entity.UserActivity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -28,4 +29,11 @@ public interface IUserActivityService extends IService<UserActivity> {
      * @return
      */
     List<ActUserDTO> getUnselectedTeaByActId(Integer actId);
+
+    /**
+     * 根据用户id查询参加的课设活动
+     * @param userId
+     * @return
+     */
+    List<MyActDTO> getMyActByUser(String userId);
 }

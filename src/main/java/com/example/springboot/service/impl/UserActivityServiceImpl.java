@@ -2,6 +2,7 @@ package com.example.springboot.service.impl;
 
 import cn.hutool.log.Log;
 import com.example.springboot.controller.dto.ActUserDTO;
+import com.example.springboot.controller.dto.MyActDTO;
 import com.example.springboot.entity.User;
 import com.example.springboot.entity.UserActivity;
 import com.example.springboot.mapper.UserActivityMapper;
@@ -44,8 +45,14 @@ public class UserActivityServiceImpl extends ServiceImpl<UserActivityMapper, Use
      */
     @Override
     public List<ActUserDTO> getUnselectedTeaByActId(Integer actId) {
-        List<ActUserDTO> Users = userActivityMapper.selectTeaByActId(actId);
-        return Users;
+        List<ActUserDTO> users = userActivityMapper.selectTeaByActId(actId);
+        return users;
+    }
+
+    @Override
+    public List<MyActDTO> getMyActByUser(String userId) {
+        List<MyActDTO> acts = userActivityMapper.selectMyActByUser(userId);
+        return acts;
     }
 
 

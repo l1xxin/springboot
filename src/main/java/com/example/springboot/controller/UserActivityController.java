@@ -177,5 +177,10 @@ public class UserActivityController {
         return Result.success(userActivityService.getUnselectedTeaByActId(actId));
     }
 
+    @GetMapping("/findMyAct/{userId}")
+    public Result findActByUser(@PathVariable String userId){
+        return Result.success(userActivityService.getMyActByUser(userId));
+    }
+
 }
 
