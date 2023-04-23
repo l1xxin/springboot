@@ -117,12 +117,12 @@ public class CodeGenerator {
                 formBuilder.append(space10).append("<el-date-picker v-model=\"form.").append(camelCaseName).append("\" type=\"date\" value-format=\"yyyy-MM-dd\" placeholder=\"选择日期\"></el-date-picker>\n");
             } else if (tableColumn.getName().endsWith("file")) {
                 // 文件上传
-                formBuilder.append(space10).append("<el-upload action=\"http://localhost:9090/file/upload\" ref=\"file\" :on-success=\"handleFileUploadSuccess\">\n");
+                formBuilder.append(space10).append("<el-upload action=\"http://localhost:9091/file/upload\" ref=\"file\" :on-success=\"handleFileUploadSuccess\">\n");
                 formBuilder.append(space10).append("  <el-button size=\"small\" type=\"primary\">点击上传</el-button>\n");
                 formBuilder.append(space10).append("</el-upload>\n");
             } else if (tableColumn.getName().endsWith("img")) {
                 // 文件上传
-                formBuilder.append(space10).append("<el-upload action=\"http://localhost:9090/file/upload\" ref=\"img\" :on-success=\"handleImgUploadSuccess\">\n");
+                formBuilder.append(space10).append("<el-upload action=\"http://localhost:9091/file/upload\" ref=\"img\" :on-success=\"handleImgUploadSuccess\">\n");
                 formBuilder.append(space10).append("  <el-button size=\"small\" type=\"primary\">点击上传</el-button>\n");
                 formBuilder.append(space10).append("</el-upload>\n");
             } else {
