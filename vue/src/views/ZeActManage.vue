@@ -174,7 +174,20 @@
 				});
 				console.log(this.stuSelection);
 			},
-
+			// 添加教师列表多选改变
+			handleTeaSelection(val) {
+				console.log(val)
+				this.teaSelection = val.map(({
+					name,
+					num
+				}) => {
+					return {
+						userId: num,
+						actId: this.act
+					}
+				});
+				console.log(this.teaSelection);
+			},
 			reset() {
 				this.name = ""
 				this.load()
@@ -218,9 +231,9 @@
 			},
 			// 添加学生到用户活动表
 			saveStuAct() {
-				if (!this.stuSelection.length) {
-				  this.$message.error("请选择需要添加的用户")
-				  return
+				if (this.stuSelection.length == 0) {
+					this.$message.error("请选择需要添加的用户")
+					return
 				}
 				this.request.post("/userActivity/addUserAct", this.stuSelection).then(res => {
 					if (res.code === '200') {
@@ -249,9 +262,10 @@
 				})
 			},
 			saveTeaAct() {
-				if (!this.teaSelection.length) {
-				  this.$message.error("请选择需要添加的用户")
-				  return
+				if (this.teaSelection.length == 0) {
+					console.log(this.teaSelection)
+					this.$message.error("请选择需要添加的用户")
+					return
 				}
 				this.request.post("/userActivity/addUserAct", this.teaSelection).then(res => {
 					if (res.code === '200') {
