@@ -31,6 +31,7 @@
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
       <el-table-column prop="teaId" label="申报人id"></el-table-column>
+      <el-table-column prop="actId" label="活动id"></el-table-column>
       <el-table-column prop="name" label="题目名称"></el-table-column>
       <el-table-column prop="des" label="题目描述"></el-table-column>
       <el-table-column label="文件"><template slot-scope="scope"><el-button type="primary" @click="download(scope.row.file)">下载</el-button></template></el-table-column>
@@ -70,6 +71,9 @@
       <el-form label-width="120px" size="small" style="width: 80%; margin: 0 auto">
         <el-form-item label="申报人id">
           <el-input v-model="form.teaId" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="活动id">
+          <el-input v-model="form.actId" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="题目名称">
           <el-input v-model="form.name" autocomplete="off"></el-input>

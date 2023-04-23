@@ -15,7 +15,7 @@ import lombok.Setter;
  * </p>
  *
  * @author lcx
- * @since 2023-04-23
+ * @since 2023-04-24
  */
 @Getter
 @Setter
@@ -31,6 +31,9 @@ public class TeaTopic implements Serializable {
 
     @ApiModelProperty("申报人id")
     private String teaId;
+
+    @ApiModelProperty("活动id")
+    private Integer actId;
 
     @ApiModelProperty("题目名称")
     private String name;
