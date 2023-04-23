@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div style="height: 60px; line-height: 60px; font-size: 20px; padding-left: 50px; color: white;
-      background-color: rgba(0,0,0,0.2)">管理系统</div>
+      background-color: rgba(0,0,0,0.2)">专业课设管理系统</div>
     <div style="margin: 150px auto; background-color: #fff; width: 350px; height: 300px; padding: 20px; border-radius: 10px">
       <div style="margin: 20px 0; text-align: center; font-size: 24px"><b>登 录</b></div>
       <el-form :model="user" :rules="rules" ref="userForm">
