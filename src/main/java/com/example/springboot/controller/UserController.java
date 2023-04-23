@@ -212,24 +212,24 @@ public class UserController {
         InputStream inputStream = file.getInputStream();
         ExcelReader reader = ExcelUtil.getReader(inputStream);
         // 方式1：(推荐) 通过 javabean的方式读取Excel内的对象，但是要求表头必须是英文，跟javabean的属性要对应起来
-//        List<User> list = reader.readAll(User.class);
+        List<User> list = reader.readAll(User.class);
 
         // 方式2：忽略表头的中文，直接读取表的内容
-        List<List<Object>> list = reader.read(1);
-        List<User> users = CollUtil.newArrayList();
-        for (List<Object> row : list) {
-            User user = new User();
-            user.setUsername(row.get(0).toString());
-            user.setPassword(row.get(1).toString());
-            user.setNickname(row.get(2).toString());
-            user.setEmail(row.get(3).toString());
-            user.setPhone(row.get(4).toString());
-            user.setAddress(row.get(5).toString());
-            user.setAvatarUrl(row.get(6).toString());
-            users.add(user);
-        }
+//        List<List<Object>> list = reader.read(1);
+//        List<User> users = CollUtil.newArrayList();
+//        for (List<Object> row : list) {
+//            User user = new User();
+//            user.setUsername(row.get(0).toString());
+//            user.setPassword(row.get(1).toString());
+//            user.setNickname(row.get(2).toString());
+//            user.setEmail(row.get(3).toString());
+//            user.setPhone(row.get(4).toString());
+//            user.setAddress(row.get(5).toString());
+//            user.setAvatarUrl(row.get(6).toString());
+//            users.add(user);
+//        }
 
-        userService.saveBatch(users);
+        userService.saveBatch(list);
         return Result.success(true);
     }
 

@@ -211,6 +211,7 @@ export default {
     reset() {
       this.name = ""
       this.load()
+	  
     },
     handleSizeChange(pageSize) {
       console.log(pageSize)
