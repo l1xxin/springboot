@@ -27,7 +27,7 @@
 	  </el-table-column>
 	  <el-table-column label="操作"  width="180" align="center">
 	    <template slot-scope="scope">
-	      <el-button type="success" @click="handleEdit(scope.row)">查看详情 <i class="el-icon-edit"></i></el-button>
+	      <el-button type="success" @click="details(scope.row)">查看详情 <i class="el-icon-edit"></i></el-button>
 	    </template>
 	  </el-table-column>
 	</el-table>
@@ -51,7 +51,6 @@
 	        <el-button size="small" type="primary">点击上传</el-button>
 	      </el-upload>
 	    </el-form-item>
-	
 	  </el-form>
 	  <div slot="footer" class="dialog-footer">
 	    <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -148,6 +147,10 @@
 						this.$refs.file.clearFiles();
 					}
 				})
+			},
+			// 查看详情
+			details(row){
+				console.log(row);
 			},
 
 			handleSelectionChange(val) {
