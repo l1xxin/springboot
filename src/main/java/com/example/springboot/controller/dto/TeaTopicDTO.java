@@ -10,12 +10,13 @@ import lombok.Data;
 @Data
 public class TeaTopicDTO {
     /*
-    SELECT tea_topic.id as id,tea_topic.name as name,
-    tea_topic.des as des,tea_topic.file as file,
-    sys_user.nickname as nickname,tea_topic.`status` as status
-    FROM tea_topic,sys_user
+    SELECT tea_topic.id as id,tea_topic.name as name,tea_topic.des as des,
+tea_topic.file as file,sys_user.nickname as nickname,tea_topic.tea_id as teaId,
+tea_topic.`status` as status
+FROM tea_topic,sys_user
 WHERE tea_topic.tea_id = sys_user.username AND tea_topic.act_id = '1'
 ORDER BY id
+
      */
     //拟题申报id
     private Integer id;
@@ -27,6 +28,8 @@ ORDER BY id
     private String file;
     //申报人名字
     private String nickname;
+    //申报人id
+    private String teaId;
     //审核状态
     private int status;
 }

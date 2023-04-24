@@ -24,7 +24,7 @@
 			<el-table-column label="操作" width="150" align="center">
 				<template slot-scope="scope">
 					<el-button type="primary" @click="check(scope.row)" v-if="scope.row.status==2">审核<i class="el-icon-thumb"></i></el-button>
-					<el-button type="success" @click="details(scope.row)" v-if="scope.row.status!=2">查看详情 <i class="el-icon-edit"></i></el-button>
+					<el-button type="success" @click="details(scope.row)" v-if="scope.row.status!=2">查看详情 <i class="el-icon-info"></i></el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -54,7 +54,7 @@
 		        icon="el-icon-info"
 		        icon-color="red"
 		        title="您确定打回吗？"
-		        @confirm=""
+		        @confirm="refuse()"
 		    >
 		      <el-button type="danger" slot="reference">拒绝 <i class="el-icon-remove-outline"></i></el-button>
 		    </el-popconfirm>
@@ -65,7 +65,7 @@
 			    icon="el-icon-info"
 			    icon-color="red"
 			    title="您确定通过吗？"
-			    @confirm=""
+			    @confirm="saveTopic()"
 			>
 			  <el-button type="success" slot="reference">通过 <i class="el-icon-circle-check"></i></el-button>
 			</el-popconfirm>
@@ -175,10 +175,46 @@
 				this.dialogFormVisible = true
 			},
 			//通过课题新增至课题表并修改审批状态为已通过
-			saveTopic(row){
-				
+			saveTopic(){
+				//id actId
+				const data ={}
+				data.id = this.form.id
+				data.actId = this.init.id
+				//将该题目添加至活动课题表
+				console.log(data)
+				this.request.post("/activityTopic", data).then(res => {
+				  if (res.code === '200') {
+				    // this.$message.success("保存成功") 
+				  } else {
+				    this.$message.error("保存失败")
+				  }
+				})
+				//更新题目审批状态status为1
+				this.form.status = 1
+				this.request.post("/teaTopic", this.form).then(res => {
+				  if (res.code === '200') {
+				    this.$message.success("操作成功")
+				  } else {
+				    this.$message.error("保存失败")
+				  }
+				})
+				this.dialogFormVisible = false
+				this.load()
 			},
 			//打回课题更改审批状态
+			refuse(){
+				//更新题目审批状态status为1
+				this.form.status = 0
+				this.request.post("/teaTopic", this.form).then(res => {
+				  if (res.code === '200') {
+				    this.$message.success("保存成功")
+					this.dialogFormVisible = false
+					this.load()
+				  } else {
+				    this.$message.error("保存失败")
+				  }
+				})
+			}
 		}
 	}
 </script>
