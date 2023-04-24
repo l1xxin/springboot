@@ -7,7 +7,7 @@
 		<el-table-column prop="name" label="活动名称" width=""></el-table-column>
 		<el-table-column label="操作" width="600" align="center">
 			<template slot-scope="scope">
-				<el-button type="primary" @click="topics(scope.row.id)">查看课题 <i class="el-icon-edit"></i>
+				<el-button type="primary" @click="topics(scope.row)">查看课题 <i class="el-icon-edit"></i>
 				</el-button>
 			</template>
 		</el-table-column>
@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: "ZtMyActivity",
+  name: "ZasMyActivity",
   data() {
     return {
       tableData: [],
@@ -113,14 +113,17 @@ export default {
       this.load()
     },
 	//根据活动id查看当前活动的拟题记录 tea_topic
-	topics(actId){
-		const id = actId
+	topics(row){
+		const data = {
+			id:row.id,
+			name:row.name
+		};
 		//根据角色不同进入不同的页面
 		if(this.user.role='USER_TEA'){
-			sessionStorage.setItem("ActId", JSON.stringify(id));
+			sessionStorage.setItem("Act", JSON.stringify(data));
 			this.$router.push('/ztTeaTopic')
 		}
-		if(this.user.role='USER_Stu'){
+		if(this.user.role='USER_STU'){
 			// this.$router.push('/ztTeaTopic')
 		}
 		if(this.user.role='USER_EDU'){
