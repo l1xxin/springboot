@@ -7,7 +7,7 @@
 			<el-table-column prop="name" label="活动名称" width=""></el-table-column>
 			<el-table-column label="操作" width="600" align="center">
 				<template slot-scope="scope">
-					<el-button type="primary" @click="topics(scope.row)">查看课题 <i class="el-icon-edit"></i>
+					<el-button type="primary" @click="topics(scope.row)">查看课题 <i class="el-icon-info"></i>
 					</el-button>
 				</template>
 			</el-table-column>
@@ -141,7 +141,7 @@
 					this.$router.push('/ztTeaTopic')
 				}
 				if (this.user.role == 'ROLE_STU') {
-					// this.$router.push('/ztTeaTopic')
+					this.$router.push('/zsChoseTopic')
 				}
 				if (this.user.role = 'ROLE_EDU') {
 					this.$router.push('/zeCheckTopic')

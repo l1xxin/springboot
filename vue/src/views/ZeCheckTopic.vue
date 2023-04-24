@@ -71,6 +71,50 @@
 			</el-popconfirm>
 		  </div>
 		</el-dialog>
+		
+		<!-- 弹窗dialog -->
+		<el-dialog title="信息" :visible.sync="dialogFormVisible" width="40%" :close-on-click-modal="false">
+		  <el-form label-width="120px" size="small" style="width: 80%; margin: 0 auto">
+		    <el-form-item label="申报人">
+		      <el-input v-model="form.nickname" autocomplete="off" :disabled="true"></el-input>
+		    </el-form-item>
+		    <el-form-item label="题目名称">
+		      <el-input v-model="form.name" autocomplete="off" type="text" :disabled="true"></el-input>
+		    </el-form-item>
+		    <el-form-item label="题目描述">
+		      <el-input v-model="form.des" autocomplete="off" type="textarea" :disabled="true"></el-input>
+		    </el-form-item>
+		    <el-form-item label="任务书">
+		      <template slot-scope="scope">
+		      	<el-button type="primary" @click="download(form.file)" v-if="form.file">下载</el-button>
+		      </template>
+		    </el-form-item>
+		  </el-form>
+		  <div slot="footer" class="dialog-footer">
+		    <el-popconfirm
+		        class="ml-5"
+		        confirm-button-text='确定'
+		        cancel-button-text='我再想想'
+		        icon="el-icon-info"
+		        icon-color="red"
+		        title="您确定打回吗？"
+		        @confirm="refuse()"
+		    >
+		      <el-button type="danger" slot="reference">拒绝 <i class="el-icon-remove-outline"></i></el-button>
+		    </el-popconfirm>
+			<el-popconfirm
+			    class="ml-5"
+			    confirm-button-text='确定'
+			    cancel-button-text='我再想想'
+			    icon="el-icon-info"
+			    icon-color="red"
+			    title="您确定通过吗？"
+			    @confirm="saveTopic()"
+			>
+			  <el-button type="success" slot="reference">通过 <i class="el-icon-circle-check"></i></el-button>
+			</el-popconfirm>
+		  </div>
+		</el-dialog>
 	</div>
 </template>
 
