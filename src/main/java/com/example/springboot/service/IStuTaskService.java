@@ -1,9 +1,7 @@
 package com.example.springboot.service;
 
-import com.example.springboot.controller.dto.ActStuDTO;
 import com.example.springboot.entity.StuTask;
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -21,6 +19,6 @@ public interface IStuTaskService extends IService<StuTask> {
      * @param actId
      * @return
      */
-    List<ActStuDTO> getActStu(Integer actId);
+    List<String> getActStu(Integer actId);
 
 }

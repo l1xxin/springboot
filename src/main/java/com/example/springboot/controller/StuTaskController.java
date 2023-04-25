@@ -1,5 +1,6 @@
 package com.example.springboot.controller;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.poi.excel.ExcelUtil;
 import cn.hutool.poi.excel.ExcelReader;
@@ -8,11 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.example.springboot.controller.dto.ActStuDTO;
-import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.springboot.common.Result;
@@ -132,15 +132,25 @@ public class StuTaskController {
         return Result.success();
     }
 
-//    @PostMapping("/assign")
-//    public Result assign(@RequestParam Integer id){
-//        System.out.println(id);
-//        return Result.success();
-//    }
-    @GetMapping("/assign/{actId}")
-    public Result findActStu(@PathVariable Integer actId){
-        List<ActStuDTO> list = stuTaskService.getActStu(actId);
-        System.out.println(list);
+    /**
+     * 在该方法中完成对任务的分配
+     * @param actId
+     * @return
+     */
+    @GetMapping("/assign")
+    public Result findActStu(@RequestParam Integer actId,
+                             @RequestParam Integer taskId){
+        List<String> list = new ArrayList<>();
+        list = stuTaskService.getActStu(actId);
+        List<StuTask> stuTasks = CollUtil.newArrayList();
+        for (String a:list){
+            StuTask stuTask = new StuTask();
+            stuTask.setTaskId(taskId);
+            stuTask.setStuId(a);
+            stuTasks.add(stuTask);
+            System.out.println(stuTask);
+        }
+        stuTaskService.saveBatch(stuTasks);
         return Result.success(list);
     }
 

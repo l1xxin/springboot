@@ -1,6 +1,5 @@
 package com.example.springboot.mapper;
 
-import com.example.springboot.controller.dto.ActStuDTO;
 import com.example.springboot.entity.StuTask;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
@@ -25,6 +24,6 @@ public interface StuTaskMapper extends BaseMapper<StuTask> {
     @Select("SELECT a.stu_id\n" +
             "FROM act_topic_view a\n" +
             "WHERE act_id=#{actId}")
-    List<ActStuDTO> assign(@Param("actId") Integer actId);
+    List<String> assign(@Param("actId") Integer actId);
 
 }

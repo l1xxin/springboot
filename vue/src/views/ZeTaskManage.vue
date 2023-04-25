@@ -15,8 +15,8 @@
 			<!-- <el-table-column prop="state" label=""></el-table-column> -->
 			<el-table-column label="操作" width="180" align="center">
 				<template slot-scope="scope">
-					<el-button type="success" @click="assign(scope.row)" v-if="scope.row.state==0">分配任务 <i class="el-icon-edit"></i></el-button>
-					<el-button type="success" @click="handleEdit(scope.row)" v-if="scope.row.state==1">查看详情 <i class="el-icon-edit"></i></el-button>
+					<el-button type="success" @click="assign(scope.row)" v-if="scope.row.state===0">分配任务 <i class="el-icon-edit"></i></el-button>
+					<el-button type="success" @click="handleEdit(scope.row)" v-if="scope.row.state===1">查看详情 <i class="el-icon-edit"></i></el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -85,6 +85,7 @@
 				}).then(res => {
 				  this.tableData = res.data.records
 				  this.total = res.data.total
+				  console.log(this.tableData)
 				})
 			},
 
@@ -114,7 +115,12 @@
 			},
 			//分配任务
 			assign(row){
-				this.request.get("/stuTask/assign/" + row.actId).then(res => {
+				this.request.get("/stuTask/assign",{
+					params:{
+						actId:row.actId,
+						taskId:row.id
+					}
+				}).then(res => {
 					console.log(row)
 					if (res.code == '200') {
 						this.$message.success("查询成功")

@@ -1,6 +1,5 @@
 package com.example.springboot.service.impl;
 
-import com.example.springboot.controller.dto.ActStuDTO;
 import com.example.springboot.entity.StuTask;
 import com.example.springboot.mapper.StuTaskMapper;
 import com.example.springboot.service.IStuTaskService;
@@ -25,8 +24,8 @@ public class StuTaskServiceImpl extends ServiceImpl<StuTaskMapper, StuTask> impl
     private StuTaskMapper stuTaskMapper;
 
     @Override
-    public List<ActStuDTO> getActStu(Integer actId) {
-        List<ActStuDTO> list = stuTaskMapper.assign(actId);
+    public List<String> getActStu(Integer actId) {
+        List<String> list = stuTaskMapper.assign(actId);
         return list;
     }
 }
