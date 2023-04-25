@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.springboot.controller.dto.ActStuDTO;
+import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.InputStream;
@@ -128,6 +130,18 @@ public class StuTaskController {
 
         stuTaskService.saveBatch(list);
         return Result.success();
+    }
+
+//    @PostMapping("/assign")
+//    public Result assign(@RequestParam Integer id){
+//        System.out.println(id);
+//        return Result.success();
+//    }
+    @GetMapping("/assign/{actId}")
+    public Result findActStu(@PathVariable Integer actId){
+        List<ActStuDTO> list = stuTaskService.getActStu(actId);
+        System.out.println(list);
+        return Result.success(list);
     }
 
     private User getUser() {

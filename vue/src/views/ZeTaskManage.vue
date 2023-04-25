@@ -114,7 +114,15 @@
 			},
 			//分配任务
 			assign(row){
-				
+				this.request.get("/stuTask/assign/" + row.actId).then(res => {
+					console.log(row)
+					if (res.code == '200') {
+						this.$message.success("查询成功")
+						// this.tableData = res.data
+					} else {
+						this.$message.success("查询失败")
+					}
+				})
 			},
 			handleEdit(row) {
 				this.form = JSON.parse(JSON.stringify(row))
