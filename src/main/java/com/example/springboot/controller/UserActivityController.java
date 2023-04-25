@@ -10,6 +10,7 @@ import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.controller.dto.AddUserActDTO;
+import com.example.springboot.entity.StuActView;
 import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
@@ -90,6 +91,26 @@ public class UserActivityController {
 //            queryWrapper.eq("user", currentUser.getUsername());
 //        }
         return Result.success(userActivityService.page(new Page<>(pageNum, pageSize), queryWrapper));
+    }
+
+    /**
+     * 获取学生在当前活动的选题状态
+     * @param userId
+     * @param actId
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/state")
+    public Result findPage(@RequestParam String userId,
+                           @RequestParam Integer actId,
+                           @RequestParam Integer pageNum,
+                           @RequestParam Integer pageSize){
+        QueryWrapper<UserActivity> queryWrapper = new QueryWrapper<>();
+        User currentUser = TokenUtils.getCurrentUser();
+        queryWrapper.like("act_id",actId);
+        queryWrapper.like("user_id",userId);
+        return Result.success(userActivityService.page(new Page<>(pageNum,pageSize),queryWrapper));
     }
 
     /**

@@ -29,9 +29,9 @@ public class CodeGenerator {
     private static final String basePath = "D:\\bs\\springboot\\";
 
     // 数据库需要生成代码的表名
-    private static final String tableName = "tea_topic";
+    private static final String tableName = "stu_act_view";
     // 生成页面的菜单名称
-    private static final String modelName = "拟题申报";
+    private static final String modelName = "学生选题管理";
 
     // ----------------------------------------以上必修修改-----------------------------------------
 
@@ -76,7 +76,8 @@ public class CodeGenerator {
                     builder.controllerBuilder().enableHyphenStyle()  // 开启驼峰转连字符
                             .enableRestStyle();  // 开启生成@RestController 控制器
                     builder.addInclude(tableName) // 设置需要生成的表名
-                            .addTablePrefix("t_", "sys_"); // 设置过滤表前缀
+                            .addTablePrefix("sys_");
+//                            .addTablePrefix("t_", "sys_"); // 设置过滤表前缀
                 })
 //                .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .execute();
@@ -87,7 +88,7 @@ public class CodeGenerator {
      * 生成vue文件
      */
     private static void createVue(String tableName) throws Exception {
-        String lowerEntityName = StrUtil.toCamelCase(tableName.replace("sys_", "").replace("t_", ""));
+        String lowerEntityName = StrUtil.toCamelCase(tableName.replace("sys_", ""));
         String upperEntityName = StrUtil.upperFirst(lowerEntityName);
         String space6 = "      ";
         String space8 = "        ";
@@ -142,7 +143,7 @@ public class CodeGenerator {
     }
 
     private static void createMenu(String tableName, String modelName) throws Exception {
-        String lowerEntityName = StrUtil.toCamelCase(tableName.replace("sys_", "").replace("t_", ""));
+        String lowerEntityName = StrUtil.toCamelCase(tableName.replace("sys_", ""));
         String upperEntityName = StrUtil.upperFirst(lowerEntityName);
         DataSource ds = getDatasource();
         //生成菜单
