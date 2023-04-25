@@ -9,6 +9,8 @@
 				<template slot-scope="scope">
 					<el-button type="primary" @click="topics(scope.row)">查看课题 <i class="el-icon-info"></i>
 					</el-button>
+					<el-button type="primary" @click="tasks(scope.row)">查看任务 <i class="el-icon-info"></i>
+					</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -147,8 +149,10 @@
 				if (this.user.role == 'ROLE_EDU') {
 					this.$router.push('/zeCheckTopic')
 				}
-
 			},
+			tasks(row){
+				
+			}
 		}
 	}
 </script>

@@ -15,7 +15,7 @@ import lombok.Setter;
  * </p>
  *
  * @author lcx
- * @since 2023-04-23
+ * @since 2023-04-25
  */
 @Getter
 @Setter
@@ -25,12 +25,12 @@ public class StuTask implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("学生选题任务id")
+    @ApiModelProperty("id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty("学生选题id")
-    private Integer stuTopicId;
+    @ApiModelProperty("学生id")
+    private String stuId;
 
     @ApiModelProperty("任务id")
     private Integer taskId;

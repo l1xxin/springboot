@@ -30,7 +30,7 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="stuTopicId" label="学生选题id"></el-table-column>
+      <el-table-column prop="stuId" label="学生id"></el-table-column>
       <el-table-column prop="taskId" label="任务id"></el-table-column>
       <el-table-column label="文件"><template slot-scope="scope"><el-button type="primary" @click="download(scope.row.file)">下载</el-button></template></el-table-column>
       <el-table-column prop="status" label="审核状态"></el-table-column>
@@ -68,14 +68,14 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="40%" :close-on-click-modal="false">
       <el-form label-width="120px" size="small" style="width: 80%; margin: 0 auto">
-        <el-form-item label="学生选题id">
-          <el-input v-model="form.stuTopicId" autocomplete="off"></el-input>
+        <el-form-item label="学生id">
+          <el-input v-model="form.stuId" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="任务id">
           <el-input v-model="form.taskId" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="任务文件">
-          <el-upload action="http://localhost:9090/file/upload" ref="file" :on-success="handleFileUploadSuccess">
+          <el-upload action="http://localhost:9091/file/upload" ref="file" :on-success="handleFileUploadSuccess">
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
         </el-form-item>

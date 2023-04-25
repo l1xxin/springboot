@@ -30,9 +30,10 @@
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column prop="id" label="ID" width="80" sortable></el-table-column>
-      <el-table-column prop="topicId" label="题目id"></el-table-column>
+      <el-table-column prop="actId" label="活动id"></el-table-column>
       <el-table-column prop="name" label="任务名称"></el-table-column>
       <el-table-column prop="des" label="任务描述"></el-table-column>
+      <el-table-column prop="deadline" label="截止时间"></el-table-column>
       <el-table-column prop="state" label=""></el-table-column>
 
       <el-table-column label="操作"  width="180" align="center">
@@ -66,14 +67,17 @@
 
     <el-dialog title="信息" :visible.sync="dialogFormVisible" width="40%" :close-on-click-modal="false">
       <el-form label-width="120px" size="small" style="width: 80%; margin: 0 auto">
-        <el-form-item label="题目id">
-          <el-input v-model="form.topicId" autocomplete="off"></el-input>
+        <el-form-item label="活动id">
+          <el-input v-model="form.actId" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="任务名称">
           <el-input v-model="form.name" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="任务描述">
           <el-input v-model="form.des" autocomplete="off"></el-input>
+        </el-form-item>
+        <el-form-item label="截止时间">
+          <el-input v-model="form.deadline" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="">
           <el-input v-model="form.state" autocomplete="off"></el-input>
