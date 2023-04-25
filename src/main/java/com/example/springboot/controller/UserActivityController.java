@@ -10,8 +10,6 @@ import javax.servlet.ServletOutputStream;
 import java.net.URLEncoder;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.springboot.controller.dto.AddUserActDTO;
-import com.example.springboot.entity.StuActView;
-import io.swagger.models.auth.In;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.io.InputStream;
