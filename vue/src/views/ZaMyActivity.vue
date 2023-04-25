@@ -141,9 +141,10 @@
 					this.$router.push('/ztTeaTopic')
 				}
 				if (this.user.role == 'ROLE_STU') {
+					console.log(this.user.role)
 					this.$router.push('/zsChoseTopic')
 				}
-				if (this.user.role = 'ROLE_EDU') {
+				if (this.user.role == 'ROLE_EDU') {
 					this.$router.push('/zeCheckTopic')
 				}
 

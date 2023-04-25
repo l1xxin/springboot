@@ -135,6 +135,11 @@ public class TeaTopicController {
         return Result.success(teaTopicService.getApplyByActId(actId));
     }
 
+    @GetMapping("/findTopicByActId/{actId}")
+    public Result findTopicByActId(@PathVariable Integer actId){
+        return Result.success(teaTopicService.getTopicByActId(actId));
+    }
+
     private User getUser() {
         return TokenUtils.getCurrentUser();
     }

@@ -23,4 +23,11 @@ public interface ITeaTopicService extends IService<TeaTopic> {
      */
     List<TeaTopicDTO> getApplyByActId(Integer actId);
 
+    /**
+     * 根据活动id查询当前活动的已通过审批的课题
+     * @param actId
+     * @return
+     */
+    List<TeaTopicDTO> getTopicByActId(Integer actId);
+
 }

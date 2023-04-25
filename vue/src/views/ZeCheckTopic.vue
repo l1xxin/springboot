@@ -228,6 +228,7 @@
 				console.log(data)
 				this.request.post("/activityTopic", data).then(res => {
 				  if (res.code === '200') {
+					  this.load()
 				    // this.$message.success("保存成功") 
 				  } else {
 				    this.$message.error("保存失败")
@@ -237,13 +238,14 @@
 				this.form.status = 1
 				this.request.post("/teaTopic", this.form).then(res => {
 				  if (res.code === '200') {
+					  this.load()
 				    this.$message.success("操作成功")
 				  } else {
 				    this.$message.error("保存失败")
 				  }
 				})
 				this.dialogFormVisible = false
-				this.load()
+				
 			},
 			//打回课题更改审批状态
 			refuse(){

@@ -31,4 +31,10 @@ public class TeaTopicServiceImpl extends ServiceImpl<TeaTopicMapper, TeaTopic> i
         List<TeaTopicDTO> list = teaTopicMapper.selectApplyByActId(actId);
         return list;
     }
+
+    @Override
+    public List<TeaTopicDTO> getTopicByActId(Integer actId) {
+        List<TeaTopicDTO> list = teaTopicMapper.selectTopicByActId(actId);
+        return list;
+    }
 }

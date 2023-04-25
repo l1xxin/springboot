@@ -31,4 +31,16 @@ public interface TeaTopicMapper extends BaseMapper<TeaTopic> {
             "ORDER BY id\n")
     List<TeaTopicDTO> selectApplyByActId(@Param("actId")Integer actId);
 
+    /**
+     * 根据活动id查询已经通过审批的课题列表
+     * @param actId
+     * @return
+     */
+    @Select("SELECT tea_topic.id as id,tea_topic.name as name,tea_topic.des as des,\n" +
+            "tea_topic.file as file,sys_user.nickname as nickname,tea_topic.tea_id as teaId,\n" +
+            "tea_topic.`status` as status\n" +
+            "FROM tea_topic,sys_user\n" +
+            "WHERE tea_topic.tea_id = sys_user.username AND tea_topic.`status` = 1 AND tea_topic.act_id = #{actId}\n" +
+            "ORDER BY id")
+    List<TeaTopicDTO> selectTopicByActId(@Param("actId")Integer actId);
 }

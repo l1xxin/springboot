@@ -154,8 +154,6 @@ public class UserActivityController {
 //            userActivity.setState(0);
             userActivity.setUserId(row.getUserId());
             userActivity.setActId(row.getActId());
-            System.out.println("用户id"+userActivity.getUserId());
-            System.out.println("活动id"+userActivity.getActId());
             userAct.add(userActivity);
         }
         userActivityService.saveBatch(userAct);
