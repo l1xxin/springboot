@@ -151,7 +151,22 @@
 				}
 			},
 			tasks(row){
-				
+				const data = {
+					id: row.id,
+					name: row.name
+				};
+				sessionStorage.setItem("Act", JSON.stringify(data));
+				//根据角色不同进入不同的页面
+				if (this.user.role == 'ROLE_TEA') {
+					this.$router.push('/ztTeaTopic')
+				}
+				if (this.user.role == 'ROLE_STU') {
+					console.log(this.user.role)
+					this.$router.push('/zsChoseTopic')
+				}
+				if (this.user.role == 'ROLE_EDU') {
+					this.$router.push('/zeTaskManage')
+				}
 			}
 		}
 	}
