@@ -130,6 +130,13 @@ public class TaskViewController {
         return Result.success();
     }
 
+    @GetMapping("/myTask")
+    public Result findTask(@RequestParam Integer actId,
+                           @RequestParam String stuId){
+        return Result.success(taskViewService.getStuTaskByAct(actId,stuId));
+
+    }
+
     private User getUser() {
         return TokenUtils.getCurrentUser();
     }

@@ -162,7 +162,7 @@
 				}
 				if (this.user.role == 'ROLE_STU') {
 					console.log(this.user.role)
-					this.$router.push('/zsChoseTopic')
+					this.$router.push('/zsMyTask')
 				}
 				if (this.user.role == 'ROLE_EDU') {
 					this.$router.push('/zeTaskManage')
