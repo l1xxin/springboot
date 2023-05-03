@@ -13,7 +13,7 @@ import java.util.List;
  * </p>
  *
  * @author lcx
- * @since 2023-04-25
+ * @since 2023-05-03
  */
 public interface TaskViewMapper extends BaseMapper<TaskView> {
     /**
@@ -26,5 +26,4 @@ public interface TaskViewMapper extends BaseMapper<TaskView> {
             "FROM task_view\n" +
             "WHERE act_id = #{actId} and stu_id = #{stuId}")
     List<TaskView> selectStuTaskByAct(@Param("actId")Integer actId, @Param("stuId")String stuId);
-
 }

@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author lcx
- * @since 2023-04-25
+ * @since 2023-05-03
  */
 public interface ITaskViewService extends IService<TaskView> {
     /**
@@ -20,6 +20,5 @@ public interface ITaskViewService extends IService<TaskView> {
      * @param stuId
      * @return
      */
-    List<TaskView> getStuTaskByAct(Integer actId,String stuId);
-
+    List<TaskView> getStuTaskByAct(Integer actId, String stuId);
 }

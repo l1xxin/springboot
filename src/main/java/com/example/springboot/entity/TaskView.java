@@ -13,7 +13,7 @@ import lombok.Setter;
  * </p>
  *
  * @author lcx
- * @since 2023-04-25
+ * @since 2023-05-03
  */
 @Getter
 @Setter
@@ -34,6 +34,9 @@ public class TaskView implements Serializable {
 
     @ApiModelProperty("任务文件")
     private String file;
+
+    @ApiModelProperty("任务描述")
+    private String des;
 
     @ApiModelProperty("审核状态")
     private Integer status;

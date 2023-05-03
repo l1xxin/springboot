@@ -158,7 +158,7 @@
 				sessionStorage.setItem("Act", JSON.stringify(data));
 				//根据角色不同进入不同的页面
 				if (this.user.role == 'ROLE_TEA') {
-					this.$router.push('/ztTeaTopic')
+					this.$router.push('/ztCheckTask')
 				}
 				if (this.user.role == 'ROLE_STU') {
 					console.log(this.user.role)

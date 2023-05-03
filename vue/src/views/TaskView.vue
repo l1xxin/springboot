@@ -33,6 +33,7 @@
       <el-table-column prop="taskId" label="任务id"></el-table-column>
       <el-table-column prop="taskName" label="任务名称"></el-table-column>
       <el-table-column label="文件"><template slot-scope="scope"><el-button type="primary" @click="download(scope.row.file)">下载</el-button></template></el-table-column>
+      <el-table-column prop="des" label="任务描述"></el-table-column>
       <el-table-column prop="status" label="审核状态"></el-table-column>
       <el-table-column prop="topicId" label="题目id"></el-table-column>
       <el-table-column prop="topicName" label="题目名称"></el-table-column>
@@ -84,6 +85,9 @@
           <el-upload action="http://localhost:9091/file/upload" ref="file" :on-success="handleFileUploadSuccess">
             <el-button size="small" type="primary">点击上传</el-button>
           </el-upload>
+        </el-form-item>
+        <el-form-item label="任务描述">
+          <el-input v-model="form.des" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="审核状态">
           <el-input v-model="form.status" autocomplete="off"></el-input>

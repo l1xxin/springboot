@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author lcx
- * @since 2023-04-25
+ * @since 2023-05-03
  */
 @RestController
 @RequestMapping("/taskView")
@@ -89,6 +89,18 @@ public class TaskViewController {
         return Result.success(taskViewService.page(new Page<>(pageNum, pageSize), queryWrapper));
     }
 
+    @GetMapping("/taskPage")
+    public Result findPage(@RequestParam(defaultValue = "") String teaId,
+                           @RequestParam Integer actId,
+                           @RequestParam Integer pageNum,
+                           @RequestParam Integer pageSize) {
+        QueryWrapper<TaskView> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByDesc("id");
+        queryWrapper.like("act_id", actId);
+        queryWrapper.like("tea_id",teaId);
+        return Result.success(taskViewService.page(new Page<>(pageNum, pageSize), queryWrapper));
+    }
+
     /**
     * 导出接口
     */
@@ -129,7 +141,6 @@ public class TaskViewController {
         taskViewService.saveBatch(list);
         return Result.success();
     }
-
     @GetMapping("/myTask")
     public Result findTask(@RequestParam Integer actId,
                            @RequestParam String stuId){
