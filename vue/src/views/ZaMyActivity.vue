@@ -11,6 +11,8 @@
 					</el-button>
 					<el-button type="primary" @click="tasks(scope.row)">查看任务 <i class="el-icon-info"></i>
 					</el-button>
+					<el-button type="primary" @click="course(scope.row)" v-if="user.role === 'ROLE_TEA'">课设管理 <i class="el-icon-info"></i>
+					</el-button>
 				</template>
 			</el-table-column>
 		</el-table>
@@ -167,6 +169,15 @@
 				if (this.user.role == 'ROLE_EDU') {
 					this.$router.push('/zeTaskManage')
 				}
+			},
+			course(row){
+				const data = {
+					id: row.id,
+					name: row.name
+				};
+				sessionStorage.setItem("Act", JSON.stringify(data));
+				//根据角色不同进入不同的页面
+				this.$router.push('/ztCourseManage')
 			}
 		}
 	}

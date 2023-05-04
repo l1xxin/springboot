@@ -123,11 +123,26 @@
 				}).then(res => {
 					console.log(row)
 					if (res.code == '200') {
-						this.$message.success("查询成功")
+						this.$message.success("分配成功")
 						// this.tableData = res.data
 					} else {
-						this.$message.success("查询失败")
+						this.$message.success("分配失败")
 					}
+				})
+				this.form.id = row.id
+				this.form.actId = row.actId
+				this.form.name = row.name
+				this.form.des = row.des
+				this.form.deadline = row.deadline
+				this.form.state = 1
+				this.request.post("/task", this.form).then(res => {
+				  if (res.code === '200') {
+				    this.$message.success("保存成功")
+				    this.dialogFormVisible = false
+				    this.load()
+				  } else {
+				    this.$message.error("保存失败")
+				  }
 				})
 			},
 			handleEdit(row) {

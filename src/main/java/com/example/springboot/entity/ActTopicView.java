@@ -17,32 +17,14 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("task_view")
-@ApiModel(value = "TaskView对象", description = "VIEW")
-public class TaskView implements Serializable {
+@TableName("act_topic_view")
+@ApiModel(value = "ActTopicView对象", description = "VIEW")
+public class ActTopicView implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty("id")
+    @ApiModelProperty("学生选题id")
     private Integer id;
-
-    @ApiModelProperty("任务id")
-    private Integer taskId;
-
-    @ApiModelProperty("任务名称")
-    private String taskName;
-
-    @ApiModelProperty("任务文件")
-    private String file;
-
-    @ApiModelProperty("任务描述")
-    private String des;
-
-    @ApiModelProperty("指导意见")
-    private String comment;
-
-    @ApiModelProperty("审核状态")
-    private Integer status;
 
     @ApiModelProperty("题目id")
     private Integer topicId;

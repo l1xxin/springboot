@@ -9,8 +9,8 @@
 		<el-table-column prop="taskName" label="任务名称" width="150"></el-table-column>
 		<el-table-column label="文件" width="100">
 			<template slot-scope="scope">
-				<el-button type="primary" @click="handleEdit(scope.row)"  v-if="scope.row.file==null">上传文件 <i class="el-icon-edit"></i></el-button>
-				<el-button type="primary" @click="download(scope.row.file)" v-if="scope.row.file">下载</el-button>
+				<el-button type="primary" @click="handleEdit(scope.row)"  v-if="scope.row.file==null||scope.row.status==0">上传文件 <i class="el-icon-edit"></i></el-button>
+				<el-button type="primary" @click="download(scope.row.file)" v-if="scope.row.file&&scope.row.status!=0">下载</el-button>
 			</template>
 		</el-table-column>
 		<el-table-column prop="des" label="任务描述"></el-table-column>
@@ -19,7 +19,7 @@
 				<el-tag type="warning" effect="dark" v-if="scope.row.status==3">待提交</el-tag>
 				<el-tag type="primary" effect="dark" v-if="scope.row.status==2">待审核</el-tag>
 				<el-tag type="success" effect="dark" v-if="scope.row.status==1">已通过</el-tag>
-				<el-tag type="danger" effect="dark" v-if="scope.row.status==1">未通过</el-tag>
+				<el-tag type="danger" effect="dark" v-if="scope.row.status==0">未通过</el-tag>
 			</template>
 		</el-table-column>
 		<!-- <el-table-column label="操作" width="180" align="center">
@@ -127,7 +127,6 @@ export default {
          }
        })
     },
-    
     handleSelectionChange(val) {
       console.log(val)
       this.multipleSelection = val
